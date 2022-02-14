@@ -14,7 +14,8 @@
           <div class="position-relative">
             <input type="text" placeholder="Search" class="form-control">
             <i class="search-icon ri-search-line position-absolute"></i>
-          </div> <a href="settings.php#profile-settings"><i class="ri-settings-2-line ms-3"></i></a>
+            </div> 
+            <a href="settings.php"><i class="ri-settings-2-line ms-3"></i></a>
           <a href=""></a><i class="ri-notification-line ms-3"></i>
         </div>
       </div><hr>
@@ -29,10 +30,10 @@
             <h2>IZI OUSSAMA</h2>
             <h3>Web Develepment</h3>
             <div class="social-links mt-2">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="https://telegram.org/#" class="twitter" target="_blank"><i class="bi bi-telegram"></i></a>
+                <a href="https://facebook.com/#" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://instagram.com/#" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://linkedin.com/#" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>    
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@
             <input type="text" placeholder="Search" class="form-control">
             <i class="ri-search-line position-absolute search-icon"></i>
           </div>
-          <a href="settings.php#profile-settings"><i class="ri-settings-2-line ms-3"></i></a>
+          <a href="settings.php" ><i class="ri-settings-2-line ms-3"></i></a>
           <i class="ri-notification-line ms-3"></i>
         </div>
       </div>

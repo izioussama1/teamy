@@ -35,13 +35,13 @@
                    </a>
                </li>
                <li class="mb-5">
-                   <a href="settings.php" class="link align-items-center d-flex">
+                   <a href="users.php" class="link align-items-center d-flex">
                        <i class="ri-user-line"></i>
                          <span class="ms-4">Users</span>
                     </a>
               </li>
                <li class="mb-5">
-                    <a href="settings.php" class="link align-items-center d-flex">
+                    <a href="overview.php" class="link align-items-center d-flex">
                         <i class="ri-profile-line"></i> 
                         <span class="ms-4">Profile</span>     
                     </a>
