@@ -237,23 +237,7 @@
     margin: 15px;
   }
  
-    /* Bordered Tabs */
-.nav-tabs-bordered {
-  border-bottom: 2px solid #ebeef4;
-}
-.nav-tabs-bordered .nav-link {
-  margin-bottom: -2px;
-  border: none;
-  color: #2c384e;
-}
-.nav-tabs-bordered .nav-link:hover, .nav-tabs-bordered .nav-link:focus {
-  color: #4154f1;
-}
-.nav-tabs-bordered .nav-link.active {
-  background-color: #fff;
-  color: #4154f1;
-  border-bottom: 2px solid #4154f1;
-}
+  
   /*--------------------------------------------------------------
   # Hero Section
   --------------------------------------------------------------*/
@@ -384,90 +368,6 @@ a {
     box-shadow: none;
 }
 
-/*--------------------------------------------------------------
-# Profie Page
---------------------------------------------------------------*/
-.profile .profile-card img {
-  max-width: 120px;
-}
-.profile .profile-card h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2c384e;
-  margin: 10px 0 0 0;
-}
-.profile .profile-card h3 {
-  font-size: 18px;
-}
-.profile .profile-card .social-links a {
-  font-size: 20px;
-  display: inline-block;
-  color: rgba(1, 41, 112, 0.5);
-  line-height: 0;
-  margin-right: 10px;
-  transition: 0.3s;
-}
-.profile .profile-card .social-links a:hover {
-  color: #012970;
-}
-.profile .profile-overview .row {
-  margin-bottom: 20px;
-  font-size: 15px;
-}
-.profile .profile-overview .card-title {
-  color: #012970;
-}
-.profile .profile-overview .label {
-  font-weight: 600;
-  color: rgba(1, 41, 112, 0.6);
-}
-.profile .profile-edit label {
-  font-weight: 600;
-  color: rgba(1, 41, 112, 0.6);
-}
-.profile .profile-edit img {
-  max-width: 120px;
-}
-.flex{
-  flex-wrap: nowrap;
-}
-/* Card */
-.card {
-  margin-bottom: 30px;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
-}
-
-.card-header, .card-footer {
-  border-color: #ebeef4;
-  background-color: #fff;
-  color: #798eb3;
-  padding: 15px;
-}
-
-.card-title {
-  /* padding: 20px 0 15px 0; */
-  font-size: 18px;
-  font-weight: 500;
-  color: #012970;
-  font-family: "Poppins", sans-serif;
-}
-.card-title span {
-  color: #899bbd;
-  font-size: 14px;
-  font-weight: 400;
-}
-.card-body {
-  padding: 0 20px 20px 20px;
-}
-
-.card-img-overlay {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-.card-center{
-  justify-content: center;
-}
 
 /* dashboard */
 .img-rounded {
@@ -506,6 +406,18 @@ a {
 
 .text-white {
     color: var(--white);
+}
+
+.btn-orange {
+  background-color: var(--orange);
+}
+
+.btn-warning {
+  background-color: var(--yellow);
+}
+
+.btn-success {
+  background-color: var(--success);
 }
 
 .bg-light {
@@ -636,10 +548,25 @@ i {
   top: 12px;
 }
 
-.close{
+.rounde {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+}
+
+input[type="file"] {
   display: none;
 }
 
-.open{
-  display: block;
+.custom-file-upload {
+  width: 100%;
+  height: 220px;
+}
+
+.height {
+  height: 60px;
 }

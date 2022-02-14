@@ -12,11 +12,21 @@
             <input type="text" placeholder="Search" class="form-control">
             <i class="ri-search-line position-absolute search-icon"></i>
           </div>
-           <a href="settings.php"><i class="ri-settings-2-line ms-3"></i></a>
+          <i class="ri-settings-2-line ms-3"></i>
           <i class="ri-notification-line ms-3"></i>
         </div>
       </div>
       <hr /> 
+      <div class="bg-white w-100 p-3 shadow-none">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="ms-2 d-flex align-items-center">
+                    <a href="#" class="text-dark d-flex align-items-center me-4">Status <span class="fw-bold d-flex align-items-center ms-2">Any <i class="ri-arrow-down-s-line "></i></span></a>
+                    <a href="#" class="text-dark d-flex align-items-center me-4">Asigned to <span class="fw-bold d-flex align-items-center ms-2">Anyone <i class="ri-arrow-down-s-line "></i></span></a>
+                    <a href="#" class="text-dark d-flex align-items-center me-4">Sort by<span class="fw-bold d-flex align-items-center ms-2"> Creation Date <i class="ri-arrow-down-s-line "></i></span></a>
+                </div>
+                <a href="create.php" class="btn btn-primary">+ Create New Project</a>
+            </div>
+      </div>
     <div class="d-flex mt-5 align-items-center justify-content-between pb-5">
         <h6 class="fw-bold text-secondary">9 projects in result</h6>
         <div class="d-flex text-dark fw-bold align-items-center">
@@ -67,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="text-primary">View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -102,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="text-primary">View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -137,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="text-primary">View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -172,7 +182,7 @@
                         </div>
                     </div>
                 </div>
-                 <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -207,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-                 <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -242,7 +252,7 @@
                         </div>
                     </div>
                 </div>
-                 <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -277,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-                 <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -312,7 +322,7 @@
                         </div>
                     </div>
                 </div>
-                 <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
@@ -347,7 +357,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="text-primary">  View Subtasks <i class="ri-arrow-down-s-line"></i> </a>
+                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
             </div>
         </div>
     </div>
