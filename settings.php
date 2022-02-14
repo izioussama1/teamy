@@ -3,9 +3,10 @@
  require_once("includes/sidebar.php") 
 
 ?>
-<body style="background-color: #f6f9ff;">
+<body class="bg-light">
 
-<div class="ms-auto col-md-10">
+<div class="col-md-10 col-12 bg-light ms-auto">
+    <div class="container-fluid">
       <div class="d-flex align-items-center pt-3 justify-content-between">
         <div class="text-dark fw-bold text-uppercase">
           Dashboard
@@ -13,11 +14,14 @@
         <div class="d-flex align-items-center">
           <div class="position-relative">
             <input type="text" placeholder="Search" class="form-control">
-            <i class="search-icon ri-search-line position-absolute"></i>
-          </div> <a href="settings.php"><i class="ri-settings-2-line ms-3"></i></a>
-          <a href=""></a><i class="ri-notification-line ms-3"></i>
+            <i class="ri-search-line position-absolute search-icon"></i>
+          </div>
+          <a href="settings.php" ><i class="ri-settings-2-line ms-3"></i></a>
+          <i class="ri-notification-line ms-3"></i>
         </div>
-      </div><hr>
+      </div>
+      <hr />
+      
   <section class="section profile">
     <div class="row card-center">
       <div class="col-xl-4">

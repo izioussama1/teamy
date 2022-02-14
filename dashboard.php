@@ -1,6 +1,7 @@
 <?php
   require_once("includes/sidebar.php")
 ?>
+
   <div class="col-md-10 col-12 bg-light ms-auto">
     <div class="container-fluid">
       <div class="d-flex align-items-center pt-3 justify-content-between">
