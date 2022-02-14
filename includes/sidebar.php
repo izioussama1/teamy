@@ -41,7 +41,7 @@
                     </a>
               </li>
                <li class="mb-5">
-                    <a href="profile.php" class="link align-items-center d-flex">
+                    <a href="settings.php" class="link align-items-center d-flex">
                         <i class="ri-profile-line"></i> 
                         <span class="ms-4">Profile</span>     
                     </a>

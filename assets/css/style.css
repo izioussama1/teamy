@@ -635,3 +635,11 @@ i {
 .top-12 {
   top: 12px;
 }
+
+.close{
+  display: none;
+}
+
+.open{
+  display: block;
+}
