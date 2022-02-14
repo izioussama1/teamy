@@ -5,7 +5,7 @@
 ?>
 <body style="background-color: #f6f9ff;">
 
-<div class="container-fluid" style="flex-shrink: 1;">
+<div class="ms-auto col-md-10">
       <div class="d-flex align-items-center pt-3 justify-content-between">
         <div class="text-dark fw-bold text-uppercase">
           Dashboard
