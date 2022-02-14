@@ -1,5 +1,5 @@
 <?php require_once("header.php") ?>
-<div class="row w-100">
+<div class="row ">
     <div class="col-md-2 hvh-100 col-12 ps-5 pt-3 pe-0 bg-white position-fixed">
            <a href="index.php" class="logo fs-4 fw-bold"><span class="text-primary">T</span>eamy</a>
            <div class="d-flex align-items-center mt-5">
@@ -35,7 +35,7 @@
                    </a>
                </li>
                <li class="mb-5">
-                   <a href="settings.php" class="link align-items-center d-flex">
+                   <a href="users.php" class="link align-items-center d-flex">
                        <i class="ri-user-line"></i>
                          <span class="ms-4">Users</span>
                     </a>
