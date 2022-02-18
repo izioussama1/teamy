@@ -678,3 +678,24 @@ input[type="file"] {
   height: 35px;
   border-radius: 50%;
 }
+input[type=checkbox]{
+  transform: scale(1.5);
+  color:#012970 !important;
+}
+.text-red{
+  color: red;
+}
+.text-green{
+  color: #47b982;
+}
+.text-gray{
+  color: gray;
+}
+.ff{
+  font-family: Montserat;
+}
+.f-attach{
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+}
