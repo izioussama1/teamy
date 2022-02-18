@@ -19,9 +19,9 @@
   </div>
 
   <div class="col-md-10 col-12 bg-light ms-auto">
-    <div class="container-fluid">
-        <hr/>
-        <div class="col-md-7 col-sm-3 col-12 mb-5">
+    <hr class="mt-2"/>
+    <div class="container-fluid row">
+      <div class="col-sm-7 col-12 mb-5">
               <div class="bg-white p-4">
                   <div class="d-flex justify-content-between align-items-center">
                       <div>
@@ -42,10 +42,8 @@
                   </div>
                 
               </div>
-        </div>
-
-        <div class="col-md-7 col-sm-3 col-12 mb-5">
-              <div class="bg-white p-4">
+        
+              <div class="bg-white p-4 mt-5">
                   <div class="d-flex justify-content-between align-items-center">
                       <div>
                           <span class="fs-4 text-black fw-bolder">Subtasks</span> 
@@ -77,10 +75,8 @@
                       </div>
                 </div>
               </div>
-        </div>
-
-        <div class="col-md-7 col-sm-3 col-12 mb-5">
-              <div class="bg-white p-4">
+      
+              <div class="bg-white p-4 mt-5">
                   <div>
                     <span class="fs-4 text-black fw-bolder me-2">Task Details</span> 
                     <a href="#" class="text-gray fw-bold">Edit</a>
@@ -142,7 +138,24 @@
                   </div>
               </div>
         </div>
+           <div class="col-sm-4 col-12">
+              <div class="bg-white p-4">
+                      <div>
+                          <span class="text-dark fw-bold">Discussions</span>
+                      </div>
+                      <div class="mt-4">
+                        <input class="form-control" type="text" placeholder="Write a comments..." >
+                       </div> 
+                       <div class="d-flex align-items-center">
+                        <h6 class="fs-6 text-black fw-bold d-flex align-items-center pt-2 lh-base w-90 col-4"><img src="assets/images/img.jpg" class="picprofile me-2"> Izi & Ayoub  </h6><span >2 Days ago</span>
+                      </div>                        
+                      <p>Everything is clear, thank you very much </p>
+
+              </div>
+                
+           </div>
       </div> 
+      
     </div>
   </div>
 </body>
