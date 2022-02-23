@@ -1,11 +1,9 @@
 <?php
   require_once("config/db.php");
-  require_once("includes/sidebar.php");
-
-
   $id = $_GET['id'];
   $sql = "SELECT * FROM `tasks` WHERE `project_id` = '$id'";
   $result = mysqli_query($conn , $sql);
+  require_once("includes/sidebar.php");
 ?>
   <div class="col-md-10 col-12 bg-light ms-auto">
     <div class="container-fluid">
@@ -30,7 +28,7 @@
                     <a href="#" class="text-dark d-flex align-items-center me-4">Asigned to <span class="fw-bold d-flex align-items-center ms-2">Anyone <i class="ri-arrow-down-s-line "></i></span></a>
                     <a href="#" class="text-dark d-flex align-items-center me-4">Sort by<span class="fw-bold d-flex align-items-center ms-2"> Creation Date <i class="ri-arrow-down-s-line "></i></span></a>
                 </div>
-                <a href="create-task.php" class="btn btn-primary">+ Create New Task</a>
+                <a href="create-task.php?project_id=<?php echo $id ?>" class="btn btn-primary">+ Create New Task</a>
             </div>
       </div>
     <div class="d-flex mt-5 align-items-center justify-content-between pb-5">

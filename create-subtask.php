@@ -1,5 +1,25 @@
 <?php
-    require_once("includes/sidebar.php")
+    require_once("config/db.php");
+
+    
+    $task_id = $_GET['task_id'];
+    $team_id = $_GET['team_id'];
+
+    if(isset($_POST['submit'])) {
+        $status = $_POST['Status'];
+        $title = $_POST['title'];
+        $assignedto = $_POST['assignedto'];
+        
+        $sql = "INSERT INTO `subtask`  (`title` , `status` , `assigned-to` ) VALUES ('$title'  , '$status' , '$assignedto') ";
+        
+        if(mysqli_query($conn , $sql)) {
+            header("Location:details.php?id=$task_id");
+        }
+    }
+        
+    require_once("includes/sidebar.php");
+
+
     ?>
     <div class="col-md-10 col-12 bg-light ms-auto">
         <div class="container-fluid">
@@ -16,7 +36,7 @@
             </div>
         </div>
         <hr /> 
-            <div class=" row">
+            <form method="POST">
                     <div class="row">
                         <div class="col-sm-6 col-12 bg-white p-4 shadow-sm ms-4">
                             <div class="d-flex align-items-center">
@@ -25,44 +45,36 @@
                             </div>
                             <div class="mb-4">
                                 <label for="Title" class="form-label text-dark fw-bold"> Title</label>
-                                <input type="text" class="form-control" id="Title" placeholder="e . g Website Design">
+                                <input type="text" name="title" class="form-control" id="Title" placeholder="e . g Website Design">
                             </div>
                             <div class="mb-4">
-                                <label  class="form-label text-dark fw-bold">Status</label>
-                                <div class="row">
-                                    <div class="col-sm-3 col-6">
-                                        <button class="w-100 btn btn-orange text-white ">Not Started</button>
-                                    </div>
-                                    <div class="col-sm-3 col-6">
-                                        <button class="w-100 btn btn-primary text-white">Paused</button>
-                                    </div>
-                                    <div class="col-sm-3 col-6">
-                                        <button class="w-100 btn btn-warning text-white">In Progress</button>
-                                    </div>
-                                    <div class="col-sm-3 col-6">
-                                        <button class="w-100 btn btn-success text-white">Done</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label for="Asigned" class="form-label text-dark fw-bold"> Assigned To</label>
-                                <select name="assignedto" class="form-control" id="assignedto">
-                                    <option value="Izi Oussama">Izi Oussama</option>
-                                    <option value="Ayoub Berouijel">Ayoub Berouijel</option>
-                                    <option value="Mouad Weld L9af">Mouad Weld L9af</option>
+                                <label for="Status" class="form-label text-dark fw-bold"> Status</label>
+                                <select name="Status" class="form-control" id="Status">
+                                    <option value="Not Started">Not Started</option>
+                                    <option value="Paused">Paused</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Done">Done</option>
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="notes" class="form-label text-dark fw-bold">Notes</label>
-                                <textarea class="form-control" id="notes" rows="4" placeholder="e . g Add Your Note" style="resize: none;"></textarea>
+                                <label for="assignedto" class="form-label text-dark fw-bold"> Assigned To</label>
+                                <select name="assignedto" class="form-control" id="assignedto">
+                                    <?php 
+                                        $sql1 = "SELECT * FROM `users` WHERE `admin` = 'false' AND `team_id` = '$team_id'";
+                                        $result1 = mysqli_query($conn , $sql1);
+                                        while ($row = mysqli_fetch_assoc($result1)) {
+                                    ?>
+                                            <option value="<?php echo $row['username'] ?>"><?php echo $row['username'] ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                             <div class="mb-4">
-                                <button class="btn btn-dark me-3">Cancel</button>
-                                <button class="btn btn-primary">Proceed</button>
+                                <a href="details.php?id=<?php echo $task_id ?>" class="btn btn-dark me-3">Cancel</a>
+                                <button type="submit" name="submit" class="btn btn-primary">Proceed</button>
                             </div>
                         </div>              
                     </div>
-                 </div>
+                 </form>
             </div>
         </div>
     </div>
