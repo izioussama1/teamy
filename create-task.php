@@ -1,4 +1,47 @@
 <?php
+ require_once("config/db.php");
+        
+ // Check if image file is a actual image or fake image
+ if(isset($_POST["submit"])) {
+     $target_dir = "uploads/";
+     $target_file = $target_dir . basename($_FILES["create"]["name"]);
+     $uploadOk = 1;
+     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+     // Check file size
+     if ($_FILES["create"]["size"] > 5000000) {
+         echo "Sorry, your file is too large.";
+         $uploadOk = 0;
+         }
+
+             // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+           echo "Sorry, your file was not uploaded.";
+          // if everything is ok, try to upload file
+      } else {
+               if (move_uploaded_file($_FILES["create"]["tmp_name"], $target_file)) {
+                   $title = $_POST['title'];
+                   $client = $_POST['Client'];
+                   $deadline = $_POST['deadline'];
+                   $assignedto = $_POST['assignedto'];
+                   $note = $_POST['note'];
+
+                   if(isset($_POST['active'])) {
+                       $active = $_POST['active'];
+                       echo $active;
+                   }
+                   
+                 //   $project = "INSERT INTO projects  (`title` , `deadline` , `status`) VALUES ('$title' , '$deadline' , '$active' )";
+                 //      if (mysqli_query($conn , $project)) {
+                 //           header("Location:projects.php");
+                 //     } else {
+                 //             echo "fucked up";
+                 //     }
+                } else {
+                     echo "Sorry, there was an error uploading your file.";
+                }
+      }
+   }
+
     require_once("includes/sidebar.php")
     ?>
     <div class="col-md-10 col-12 bg-light ms-auto">

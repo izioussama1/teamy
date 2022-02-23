@@ -1,5 +1,9 @@
 <?php
-    require_once("includes/sidebar.php")
+    require_once("config/db.php");
+    require_once("includes/sidebar.php");
+
+    $user = "SELECT * FROM `users`";
+    $result = mysqli_query($conn , $user);
     ?>
     <div class="col-md-10 col-12 bg-light ms-auto">
         <div class="container-fluid">
@@ -32,60 +36,35 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="height">
-                            <td>Ayoub Berouijel</td>
-                            <td>berouijelayoub@gmail.com</td>
-                            <td>A</td>
-                            <td >316</td>
-                            <td>158</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                            <td></td>
-                        </tr>
-                        <tr class="height">
-                            <td>Mouad Belghazi</td>
-                            <td>MouadBlg@gmail.com</td>
-                            <td>No Team Yet</td>
-                            <td >
-                               Nothing Found
-                            </td>
-                            <td>0</td>
-                            <td><span class="badge bg-danger">Rejected</span></td>
-                            <td></td>
-                        </tr>
-                        <tr class="height">
-                            <td>nadi Kanadi</td>
-                            <td>nadikanadi@gmail.com</td>
-                            <td>No Team Yet</td>
-                            <td >
-                               Nothing Found
-                            </td>
-                            <td>0</td>
-                            <td>
-                                <span class="badge bg-warning">Pending</span> 
-                            </td>
-                            <td>
-                                <button class="btn btn-primary p-0 px-1  text-white">Approve</button> 
-                                <button class="btn btn-danger p-0 px-1  text-white">Reject</button>
-                            </td>
-                            </tr>
-                        <tr class="height">
-                            <td>izi Pizi</td>
-                            <td>izipizi@gmail.com</td>
-                            <td>A</td>
-                            <td >216</td>
-                            <td>158</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                            <td></td>
-                        </tr>
-                        <tr class="height">
-                            <td>KSI JJ</td>
-                            <td>KSIJJ@gmail.com</td>
-                            <td>Sideman</td>
-                            <td>182</td>
-                            <td>12</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                            <td></td>
-                        </tr>
+                            <?php 
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    $t = $row['team_id']
+                            ?>
+                             <tr class="height">
+                                <td><?php echo $row["username"] ?></td>
+                                <td><?php echo $row["email"] ?></td>
+                                <td>
+                                    <?php
+                                     $team = "SELECT * FROM `team` WHERE `id` = '$t'";
+                                     $res = mysqli_query($conn , $team);
+                                     while ($row2 = mysqli_fetch_assoc($res)) {
+                                         echo $row2["name"];   
+                                     }
+                                    ?>
+                                </td>
+                                <td >
+                                Nothing Found
+                                </td>
+                                <td>0</td>
+                                <td>
+                                    <span class="badge bg-warning">Pending</span> 
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary p-0 px-1  text-white">Approve</button> 
+                                    <button class="btn btn-danger p-0 px-1  text-white">Reject</button>
+                                </td>
+                           </tr>
+                        <?php } ?> 
                         </tbody>
                     </table>
                 </div>

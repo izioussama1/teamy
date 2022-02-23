@@ -71,17 +71,6 @@
     }
   
     /**
-     * Mobile nav toggle
-     */
-    // on('click', '.mobile-nav-toggle', function(e) {
-    //   select('#navbar').classList.toggle('navbar-mobile')
-    //   this.classList.toggle('bi-list')
-    //   this.classList.toggle('bi-x')
-    // })
-  
-  
-  
-    /**
      * Animation on scroll
      */
     function aos_init() {
@@ -98,17 +87,17 @@
   
   })();
 
+    // swiper
+
+    const swiper = new Swiper(".mySwiper", {
+      effect: "cards",
+      grabCursor: true,
+    });
+
 
 // chart js configration
 
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
+const labels = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aut","Sep","Oct","Nov","Dec"];
 
   const data = {
     labels: labels,
@@ -116,7 +105,7 @@
       label: 'Tasks' ,
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 6, 5, 2, 10, 18, 26],
+      data: [0, 6, 5, 2, 10, 18, 15 , 8, 14 , 13 , 15  , 16 ],
     }]
   };
 
@@ -127,14 +116,76 @@
   };
 
 
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
 
-  // swiper
+  const labels2 = ["Photo" , "Sheets" , "Documents"];
 
-  const swiper = new Swiper(".mySwiper", {
-    effect: "cards",
-    grabCursor: true,
-  });
+  const data2 = {
+    labels: labels2,
+    datasets: [
+      {
+        label: 'Data',
+        data: [10, 108, 206],
+        backgroundColor: 'rgb(250, 199, 132)',
+        borderColor: 'rgb(250, 199, 132)',
+        borderWidth: 2,
+        borderRadius: 8,
+        borderSkipped: false,
+      }
+    ]
+  };
+
+  const config2 = {
+    type: 'bar',
+    data: data2,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Files'
+        }
+      }
+    },
+  };
+
+  
+  // const myChart = new Chart(
+  //   [ document.getElementById('myChart'), config ,
+  //    document.getElementById('myChart2'),config2]
+  // );
+  
+  // const myChart2 = new Chart(
+  //   document.getElementById('myChart2'),
+  //   config2
+  // );
+
+
+  let notstarted = document.getElementById("not-started");
+  let pause = document.getElementById("paused");
+  let done = document.getElementById("done");
+  let progress = document.getElementById("progress");
+  
+ 
+  function addActive (param , others) {
+    param.addEventListener("click" , (e) => {
+      e.preventDefault();
+      e.target.classList.toggle("active");
+      e.target.setAttribute("name" , "active");
+      console.log(e.target)
+
+      others.forEach(other => {
+          other.classList.remove("active");
+          other.removeAttribute('name');
+      })
+    })
+
+  }
+
+
+  addActive(notstarted , [pause , done , progress])
+  addActive(pause , [notstarted , done , progress])
+  addActive(done , [notstarted , pause , progress])
+  addActive(progress , [notstarted , pause , done])

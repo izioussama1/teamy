@@ -1,4 +1,12 @@
-<?php require_once("header.php") ?>
+<?php
+session_start();
+
+    // if(!isset($_SESSION['id'])) {
+    //     header("Location:login.php");
+    // }
+
+require_once("header.php")
+?>
 <div class="row ">
     <div class="col-md-2 hvh-100 col-12 ps-5 pt-3 pe-0 bg-white position-fixed">
            <a href="index.php" class="logo fs-4 fw-bold"><span class="text-primary">T</span>eamy</a>
@@ -41,7 +49,7 @@
                     </a>
               </li>
                <li class="mb-5">
-                    <a href="profile.php" class="link align-items-center d-flex">
+                    <a href="overview.php" class="link align-items-center d-flex">
                         <i class="ri-profile-line"></i> 
                         <span class="ms-4">Profile</span>     
                     </a>

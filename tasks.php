@@ -1,5 +1,11 @@
 <?php
-  require_once("includes/sidebar.php")
+  require_once("config/db.php");
+  require_once("includes/sidebar.php");
+
+
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM `tasks` WHERE `project_id` = '$id'";
+  $result = mysqli_query($conn , $sql);
 ?>
   <div class="col-md-10 col-12 bg-light ms-auto">
     <div class="container-fluid">
@@ -28,7 +34,7 @@
             </div>
       </div>
     <div class="d-flex mt-5 align-items-center justify-content-between pb-5">
-        <h6 class="fw-bold text-secondary">9 Tasks in result</h6>
+        <h6 class="fw-bold text-secondary"><?php echo mysqli_num_rows($result) ?> Tasks in result</h6>
         <div class="d-flex text-dark fw-bold align-items-center">
             <p class="mb-0 me-4">
                 Views 
@@ -45,24 +51,49 @@
     </div>
 
     <div class="row">
+    <?php
+         while ($row = mysqli_fetch_assoc($result)) { 
+           $date=date_create($row["deadline"]);
+    ?>
         <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
+            <div class="bg-white shadow-sm p-4">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
+                    <?php 
+                        if( $row["status"] == "Not Started") {
+                                echo "<span class='text-danger fw-bold'>
+                                Not Started</span>";
+                        } elseif ($row["status"] == "In Progress") {
+                                echo "<span class='text-warning fw-bold'>
+                                In Progress</span>";
+                        } elseif ($row["status"] == "Done") {
+                                echo "<span class='text-success fw-bold'>
+                                Done</span>";
+                        } else {
+                                 echo "<span class='text-primary fw-bold'>
+                                Paused</span>";
+                        }
+                    ?>
+                    <a href="details.php?id=<?php echo $row['id'] ?>" class="fs-6 d-block text-dark fw-bold pt-2 lh-base text-capitalize"><?php echo $row["title"] ?></a>
                     </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
+                   
+                    <?php 
+                        if( $row["status"] == "Not Started") {
+                            echo "<div class='rounded-circle w-5 b-danger'><i class='ri-close-line text-danger'></i> </div>";
+                        } elseif ($row["status"] == "In Progress") {
+                            echo " <div class='rounded-circle w-5 b-warning'><i class='ri-loader-4-fill text-warning'></i> </div>";
+                        } elseif ($row["status"] == "Done") {
+                            echo "<div class='rounded-circle w-5 b-success'><i class='ri-check-line text-success'></i> </div>";
+                        } else {
+                            echo "<div class='rounded-circle w-5 b-pause'><i class='ri-pause-line text-primary'></i> </div>";
+                        }
+                        ?>
+                       
+                   
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
+                            <span> <?php echo date_format( $date ,"M d")  ?> </span>
                                <div class="d-flex align-items-center ms-2">
                                  <i class="ri-chat-2-line"></i>
                                  <p class="mb-0 ms-1">19</p>
@@ -73,295 +104,15 @@
                             <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
                             <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
                             <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
+                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center fw-bold">9</div>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
+                <span name="sub" class="text-primary d-flex align-items-center cursor fw-bold">View Subtasks (1) <i class="ri-arrow-down-s-line"></i> </span>
             </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                              <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                                <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                               <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                              <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                               <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                                          <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                              <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-12 mb-5">
-            <div class="bg-white p-4">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <span class="text-warning fw-bold">In Progress</span>
-                        <h6 class="fs-6 text-dark fw-bold pt-2 lh-base w-75">Create a Landing Page For "New Arrivals"</h6>
-                    </div>
-                    <div class="rounded-circle text-orange w-5">
-                        <i class="ri-check-line"></i>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                             <span> Apr 15</span>
-                             <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-link"></i>
-                                 <p class="mb-0 ms-1">7</p>
-                             </div>
-                              <div class="d-flex align-items-center ms-2">
-                                 <i class="ri-chat-2-line"></i>
-                                 <p class="mb-0 ms-1">19</p>
-                             </div>
-                    </div>
-                    <div class="me-10">
-                        <div class="avatars">
-                            <div class="avatar mt-0 top-12"><img src="assets/images/img.jpg" class="rounded-circle img-fluid" /></div>  
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-bg.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12"><img src="assets/images/hero-img.png" class="rounded-circle img-fluid" /></div>
-                            <div class="avatar mt-0 top-12 d-flex align-items-center justify-content-center text-center"> <i class="ri-add-circle-line fs-2 w-100 img-fluid"></i></div>
-                        </div>
-                    </div>
-                </div>
-                    <a href="#" class="text-primary d-flex align-items-center fw-bold">View Subtasks (12) <i class="ri-arrow-down-s-line"></i> </a>
-            </div>
-        </div>
-    </div>
-
+         </div>
+        <?php } ?>
+      </div>
     </div>
   </div>
 </div>
