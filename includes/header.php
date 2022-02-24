@@ -21,4 +21,4 @@
    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-light">
